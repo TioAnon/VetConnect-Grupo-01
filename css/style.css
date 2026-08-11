@@ -6,3 +6,6 @@ main { padding: 20px; }
 footer { padding: 20px; }
 .contenedor { display: flex; gap: 20px; }
 .tarjeta { padding: 20px; border: 1px solid #cccccc; border-radius: 10px; }
+form { display: flex; flex-direction: column; max-width: 400px; gap: 10px; }
+input, textarea { padding: 10px; }
+button { padding: 10px; cursor: pointer; }

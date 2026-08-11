@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Admin - Mensajes de Contacto</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Panel de Administración</h1>
+        <p>Gestión de mensajes y consultas recibidas</p>
+    </header>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="admin-mensajes.html">Mensajes (Admin)</a>
+    </nav>
+    <main>
+        <section>
+            <h2>Mensajes de Contacto</h2>
+            <div class="tabla-contenedor">
+                <table class="tabla-admin">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Mensaje</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-mensajes">
+                        <!-- Ejemplo de renderizado de un mensaje recibido -->
+                        <tr>
+                            <td>11/08/2026</td>
+                            <td>Carlos Pérez</td>
+                            <td>carlos@example.com</td>
+                            <td>Quisiera agendar una hora para control de vacunación.</td>
+                            <td><span class="badge pendiente">Pendiente</span></td>
+                            <td>
+                                <button class="btn-accion">Ver</button>
+                                <button class="btn-accion btn-eliminar">Borrar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Desarrollo Web y Móvil 2026 - Módulo Admin</p>
+    </footer>
+</body>
+</html>

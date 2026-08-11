@@ -1,0 +1,8 @@
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+header { padding: 20px; }
+nav { padding: 15px; }
+nav a { margin-right: 15px; text-decoration: none; }
+main { padding: 20px; }
+footer { padding: 20px; }
+.contenedor { display: flex; gap: 20px; }
+.tarjeta { padding: 20px; border: 1px solid #cccccc; border-radius: 10px; }

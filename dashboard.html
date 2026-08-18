@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VetConnect - Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">VetConnect</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menuPrincipal">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="mascotas.html">Mascotas</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          <li class="nav-item"><a class="nav-link active" href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="py-4 bg-light border-bottom">
+    <div class="container">
+      <h1 class="fw-bold mb-0">Panel de la clínica</h1>
+      <p class="text-muted mb-0">Resumen del día y accesos rápidos.</p>
+    </div>
+  </header>
+
+  <main class="container my-4">
+        <section class="mb-5">
+      <div class="row g-4">
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+              <h2 class="display-6 fw-bold text-primary">124</h2>
+              <p class="card-text mb-0">Mascotas registradas</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+              <h2 class="display-6 fw-bold text-primary">8</h2>
+              <p class="card-text mb-0">Consultas de hoy</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+              <h2 class="display-6 fw-bold text-primary">5</h2>
+              <p class="card-text mb-0">Vacunas pendientes</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+        <section class="mb-5">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="h4 mb-0">Últimas mascotas registradas</h2>
+        <button type="button" class="btn btn-primary" id="btnRegistrarMascota">
+          Registrar mascota
+        </button>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title mb-1">Firulais</h5>
+              <p class="card-text text-muted mb-0">Dueño: Juan Pérez</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title mb-1">Kimi</h5>
+              <p class="card-text text-muted mb-0">Dueño: Ana Soto</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title mb-1">Rocky</h5>
+              <p class="card-text text-muted mb-0">Dueño: Carlos Gómez</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <section class="mb-5">
+      <h2 class="h4 mb-3">Próximas citas</h2>
+
+      <div class="table-responsive">
+        <table class="table table-hover align-middle">
+          <thead>
+            <tr>
+              <th>Hora</th>
+              <th>Mascota</th>
+              <th>Propietario</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>09:00</td>
+              <td>Firulais</td>
+              <td>Juan Pérez</td>
+              <td><span class="badge bg-success">Confirmada</span></td>
+            </tr>
+            <tr>
+              <td>10:30</td>
+              <td>Kimi</td>
+              <td>Ana Soto</td>
+              <td><span class="badge bg-warning text-dark">Pendiente</span></td>
+            </tr>
+            <tr>
+              <td>11:15</td>
+              <td>Rocky</td>
+              <td>Carlos Gómez</td>
+              <td><span class="badge bg-success">Confirmada</span></td>
+            </tr>
+            <tr>
+              <td>12:00</td>
+              <td>Luna</td>
+              <td>María Torres</td>
+              <td><span class="badge bg-danger">Cancelada</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <button type="button" class="btn btn-outline-primary mt-2">
+        Ver calendario completo
+      </button>
+    </section>
+  </main>
+  
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="toastMascota" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          ✅ Mascota registrada correctamente.
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+    document.getElementById('btnRegistrarMascota').addEventListener('click', function () {
+      const toastEl = document.getElementById('toastMascota');
+      const toast = new bootstrap.Toast(toastEl);
+      toast.show();
+    });
+  </script>
+</body>
+</html>

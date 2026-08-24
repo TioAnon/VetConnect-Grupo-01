@@ -3,81 +3,339 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VetConnect - Sistema Veterinario</title>
+  <title>VetConnect - Sistema de Gestión Veterinaria</title>
+  <!-- Bootstrap 5.3.8 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Estilos Propios -->
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="bg-dashboard">
 
-  <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">VetConnect</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+  <!-- 1. Navbar Superior -->
+  <nav class="navbar navbar-expand-lg bg-primary-custom navbar-dark sticky-top py-2">
+    <div class="container-fluid px-lg-5">
+      <!-- Logo de la clínica -->
+      <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="index.html">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M7.765 1.559a.5.5 0 0 1 .47 0l4.5 2.5a.5.5 0 0 1 .265.441v5a.5.5 0 0 1-.265.441l-4.5 2.5a.5.5 0 0 1-.47 0l-4.5-2.5A.5.5 0 0 1 3 9.5v-5a.5.5 0 0 1 .265-.441l4.5-2.5zM8 3.309 4.954 5 8 6.691 11.046 5 8 3.309zM4 6.134V9.26L7.5 11.2V8.075L4 6.134zm8 3.126V6.134L8.5 8.075V11.2l3.5-1.94z"/>
+          <circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+        <span>VetConnect</span>
+      </a>
+
+      <!-- Botón Toggler para móvil -->
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
         <span class="navbar-toggler-icon"></span>
       </button>
+
+      <!-- Enlaces de Navegación -->
       <div class="collapse navbar-collapse" id="menuPrincipal">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link" href="mascotas.html">Mascotas</a></li>
-          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
-          <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active fw-semibold" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link text-white-50" href="mascotas.html">Mascotas</a></li>
+          <li class="nav-item"><a class="nav-link text-white-50" href="#">Consultas</a></li>
+          <li class="nav-item"><a class="nav-link text-white-50" href="contacto.html">Contactos</a></li>
+          <li class="nav-item"><a class="nav-link text-white-50" href="login.html">Login</a></li>
         </ul>
+        
+        <!-- Botón + Nueva Mascota (Desktop) -->
+        <button class="btn btn-light text-primary fw-semibold px-3 py-2 d-none d-lg-flex align-items-center gap-2 shadow-sm rounded-3" data-bs-toggle="modal" data-bs-target="#modalNuevaMascota">
+          <span class="fs-5 lh-1">+</span> Nueva mascota
+        </button>
       </div>
     </div>
   </nav>
 
-  <header class="py-5 text-center bg-light border-bottom">
-    <div class="container">
-      <h1 class="fw-bold">VetConnect - Sistema de Gestión Veterinaria</h1>
-      <p class="lead text-muted">Plataforma integral para la administración clínica y atención de pacientes.</p>
+  <!-- 2. Contenido Principal / Dashboard -->
+  <main class="container-fluid px-3 px-md-4 px-lg-5 py-4 mb-5 pb-5">
+    
+    <!-- Encabezado del Dashboard -->
+    <div class="mb-4">
+      <h1 class="h2 fw-bold text-dark mb-1">Dashboard</h1>
+      <p class="text-secondary mb-0">Resumen de la clínica</p>
     </div>
-  </header>
 
-  <main>
-    <section class="container my-5">
-      <h2 class="text-center mb-4">Servicios</h2>
-      <div class="row g-4">
-        
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Mascotas</h5>
-              <p class="card-text flex-grow-1">Administra las mascotas registradas en el sistema.</p>
-              <a href="mascotas.html" class="btn btn-primary w-100">Ver mascotas</a>
+    <!-- Fila de Indicadores / Métricas Rápidas -->
+    <section class="row g-3 g-lg-4 mb-4">
+      
+      <!-- Métrica 1: Mascotas Registradas -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card card-metric border-0 shadow-sm rounded-4 p-3 h-100">
+          <div class="card-body d-flex align-items-center justify-content-between p-2">
+            <div class="d-flex align-items-center gap-3">
+              <div class="metric-icon-box bg-blue-light text-primary rounded-4 d-flex align-items-center justify-content-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M1.5 5.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0zm4-3a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0zm5 0a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0zm4 3a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0zM8 8a3 3 0 0 0-3 3c0 .828.336 1.58.879 2.121C6.42 13.664 7.172 14 8 14s1.58-.336 2.121-.879C10.664 12.58 11 11.828 11 11a3 3 0 0 0-3-3z"/>
+                </svg>
+              </div>
+              <div>
+                <h2 class="display-6 fw-bold text-dark mb-0">124</h2>
+                <span class="text-muted small fw-medium">Mascotas registradas</span>
+              </div>
             </div>
+            <a href="mascotas.html" class="btn btn-outline-primary btn-sm rounded-3 px-3 py-2 fw-semibold">Ver detalles</a>
           </div>
         </div>
-
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Consultas</h5>
-              <p class="card-text flex-grow-1">Gestiona las consultas veterinarias y controles médicos.</p>
-              <a href="#" class="btn btn-primary w-100">Ver consultas</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">Vacunas</h5>
-              <p class="card-text flex-grow-1">Consulta y actualiza el historial de vacunación.</p>
-              <a href="#" class="btn btn-primary w-100">Ver vacunas</a>
-            </div>
-          </div>
-        </div>
-
       </div>
+
+      <!-- Métrica 2: Consultas de Hoy -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card card-metric border-0 shadow-sm rounded-4 p-3 h-100">
+          <div class="card-body d-flex align-items-center justify-content-between p-2">
+            <div class="d-flex align-items-center gap-3">
+              <div class="metric-icon-box bg-green-light text-success rounded-4 d-flex align-items-center justify-content-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 2a1 1 0 0 1 1 1v1.5a.5.5 0 0 0 .5.5h1A2.5 2.5 0 0 1 13 7.5v3.793l1.146 1.147a.5.5 0 0 1-.708.708l-1.439-1.44V7.5a1.5 1.5 0 0 0-1.5-1.5h-1A1.5 1.5 0 0 1 8 4.5V3a1 1 0 0 1-1-1zm-1 0a2 2 0 0 0-2 2v1.5A1.5 1.5 0 0 1 3.5 7h-1A2.5 2.5 0 0 0 0 9.5v4A2.5 2.5 0 0 0 2.5 16h11a2.5 2.5 0 0 0 2.5-2.5v-4A2.5 2.5 0 0 0 13.5 7h-1A1.5 1.5 0 0 1 11 5.5V4a2 2 0 0 0-2-2z"/>
+                </svg>
+              </div>
+              <div>
+                <h2 class="display-6 fw-bold text-dark mb-0">8</h2>
+                <span class="text-muted small fw-medium">Consultas de hoy</span>
+              </div>
+            </div>
+            <a href="#" class="btn btn-outline-success btn-sm rounded-3 px-3 py-2 fw-semibold">Ver detalles</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Métrica 3: Vacunas Pendientes -->
+      <div class="col-12 col-md-12 col-lg-4">
+        <div class="card card-metric border-0 shadow-sm rounded-4 p-3 h-100">
+          <div class="card-body d-flex align-items-center justify-content-between p-2">
+            <div class="d-flex align-items-center gap-3">
+              <div class="metric-icon-box bg-orange-light text-warning rounded-4 d-flex align-items-center justify-content-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M14.778.085a.5.5 0 0 1 .52.128l.614.614a.5.5 0 0 1 0 .707L13.82 3.626l-1.447-1.447L14.465.093a.5.5 0 0 1 .313-.008zm-2.072 2.766 1.447 1.447-7.92 7.92a.5.5 0 0 1-.212.133l-3.5 1a.5.5 0 0 1-.617-.617l1-3.5a.5.5 0 0 1 .133-.212l7.672-7.671z"/>
+                </svg>
+              </div>
+              <div>
+                <h2 class="display-6 fw-bold text-dark mb-0">12</h2>
+                <span class="text-muted small fw-medium">Vacunas pendientes</span>
+              </div>
+            </div>
+            <a href="#" class="btn btn-outline-warning btn-sm rounded-3 px-3 py-2 fw-semibold text-warning-dark">Ver detalles</a>
+          </div>
+        </div>
+      </div>
+
     </section>
+
+    <!-- Fila Bicolumna: Próximas Citas y Últimas Mascotas -->
+    <div class="row g-4">
+      
+      <!-- Columna Izquierda: Tabla Próximas Citas -->
+      <div class="col-12 col-lg-6">
+        <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+          <h3 class="h5 fw-bold text-dark mb-4">Próximas citas</h3>
+          
+          <div class="table-responsive mb-4">
+            <table class="table align-middle custom-table mb-0">
+              <thead>
+                <tr class="text-secondary small">
+                  <th scope="col" class="pb-3 border-0">Hora</th>
+                  <th scope="col" class="pb-3 border-0">Mascota</th>
+                  <th scope="col" class="pb-3 border-0">Propietario</th>
+                  <th scope="col" class="pb-3 border-0 text-end pe-2">Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="fw-semibold">09:00</td>
+                  <td class="text-secondary">Firulais</td>
+                  <td class="text-secondary">Juan Pérez</td>
+                  <td class="text-end"><span class="badge badge-confirmada px-3 py-2 rounded-3">Confirmada</span></td>
+                </tr>
+                <tr>
+                  <td class="fw-semibold">10:30</td>
+                  <td class="text-secondary">Michi</td>
+                  <td class="text-secondary">Ana Soto</td>
+                  <td class="text-end"><span class="badge badge-pendiente px-3 py-2 rounded-3">Pendiente</span></td>
+                </tr>
+                <tr>
+                  <td class="fw-semibold">11:15</td>
+                  <td class="text-secondary">Rocky</td>
+                  <td class="text-secondary">Carlos Gómez</td>
+                  <td class="text-end"><span class="badge badge-confirmada px-3 py-2 rounded-3">Confirmada</span></td>
+                </tr>
+                <tr>
+                  <td class="fw-semibold">12:00</td>
+                  <td class="text-secondary">Luna</td>
+                  <td class="text-secondary">María Torres</td>
+                  <td class="text-end"><span class="badge badge-cancelada px-3 py-2 rounded-3">Cancelada</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="mt-auto">
+            <button class="btn btn-outline-primary btn-sm rounded-3 px-3 py-2 fw-semibold d-inline-flex align-items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+              </svg>
+              Ver calendario completo
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna Derecha: Lista de Últimas Mascotas Registradas -->
+      <div class="col-12 col-lg-6">
+        <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+          <h3 class="h5 fw-bold text-dark mb-4">Últimas mascotas registradas</h3>
+
+          <div class="d-flex flex-column gap-3 mb-4">
+            
+            <!-- Mascota 1 -->
+            <div class="d-flex align-items-center justify-content-between p-2 rounded-3 hover-bg">
+              <div class="d-flex align-items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=100&auto=format&fit=crop&q=80" alt="Max" class="pet-avatar rounded-circle object-fit-cover">
+                <div>
+                  <h4 class="h6 fw-bold mb-0 text-dark">Max</h4>
+                  <p class="small text-muted mb-0">Perro Golden Retriever</p>
+                  <span class="text-muted text-xs">Registrado: 20/05/2026</span>
+                </div>
+              </div>
+              <a href="mascotas.html" class="btn btn-outline-primary btn-sm rounded-3 px-3 py-2 fw-semibold">Ver ficha</a>
+            </div>
+
+            <!-- Mascota 2 -->
+            <div class="d-flex align-items-center justify-content-between p-2 rounded-3 hover-bg">
+              <div class="d-flex align-items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=100&auto=format&fit=crop&q=80" alt="Lola" class="pet-avatar rounded-circle object-fit-cover">
+                <div>
+                  <h4 class="h6 fw-bold mb-0 text-dark">Lola</h4>
+                  <p class="small text-muted mb-0">Gato Mestizo</p>
+                  <span class="text-muted text-xs">Registrado: 20/05/2026</span>
+                </div>
+              </div>
+              <a href="mascotas.html" class="btn btn-outline-primary btn-sm rounded-3 px-3 py-2 fw-semibold">Ver ficha</a>
+            </div>
+
+            <!-- Mascota 3 -->
+            <div class="d-flex align-items-center justify-content-between p-2 rounded-3 hover-bg">
+              <div class="d-flex align-items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=100&auto=format&fit=crop&q=80" alt="Bunny" class="pet-avatar rounded-circle object-fit-cover">
+                <div>
+                  <h4 class="h6 fw-bold mb-0 text-dark">Bunny</h4>
+                  <p class="small text-muted mb-0">Conejo Enano</p>
+                  <span class="text-muted text-xs">Registrado: 19/05/2026</span>
+                </div>
+              </div>
+              <a href="mascotas.html" class="btn btn-outline-primary btn-sm rounded-3 px-3 py-2 fw-semibold">Ver ficha</a>
+            </div>
+
+          </div>
+
+          <div class="mt-auto">
+            <a href="mascotas.html" class="text-primary fw-semibold small text-decoration-none d-inline-flex align-items-center gap-1">
+              Ver todas las mascotas <span>&rsaquo;</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </main>
 
-  <footer class="py-4 bg-dark text-white text-center">
-    <div class="container">
-      <p class="mb-0">Desarrollo Web y Móvil 2026</p>
+  <!-- 3. Botón Flotante + Nueva Mascota (Exclusivo Vista Móvil) -->
+  <button class="btn btn-primary btn-floating-mobile d-lg-none shadow-lg rounded-circle" data-bs-toggle="modal" data-bs-target="#modalNuevaMascota" title="Nueva mascota">
+    <span class="fs-3 fw-bold">+</span>
+  </button>
+
+  <!-- 4. Barra de Navegación Inferior (Exclusivo Móvil / Mobile First) -->
+  <nav class="bottom-nav d-lg-none fixed-bottom bg-white border-top py-2 shadow">
+    <div class="d-flex justify-content-around align-items-center">
+      <a href="index.html" class="bottom-nav-item active text-center text-decoration-none">
+        <div class="icon">🏠</div>
+        <small class="d-block text-xs fw-semibold">Inicio</small>
+      </a>
+      <a href="mascotas.html" class="bottom-nav-item text-center text-decoration-none text-muted">
+        <div class="icon">🐾</div>
+        <small class="d-block text-xs">Mascotas</small>
+      </a>
+      <a href="#" class="bottom-nav-item text-center text-decoration-none text-muted">
+        <div class="icon">🩺</div>
+        <small class="d-block text-xs">Consultas</small>
+      </a>
+      <a href="#" class="bottom-nav-item text-center text-decoration-none text-muted">
+        <div class="icon">📅</div>
+        <small class="d-block text-xs">Citas</small>
+      </a>
+      <a href="login.html" class="bottom-nav-item text-center text-decoration-none text-muted">
+        <div class="icon">👤</div>
+        <small class="d-block text-xs">Perfil</small>
+      </a>
+    </div>
+  </nav>
+
+  <!-- 5. Footer General -->
+  <footer class="py-4 bg-white border-top text-muted small text-center d-none d-lg-block">
+    <div class="container-fluid px-5 d-flex justify-content-between flex-wrap gap-2">
+      <span>&copy; 2026 VetConnect - Sistema de gestión para clínicas veterinarias</span>
+      <span>Desarrollo Web y Móvil 2026 · Versión 1.0.0</span>
     </div>
   </footer>
 
+  <!-- 6. Modal Nueva Mascota -->
+  <div class="modal fade" id="modalNuevaMascota" tabindex="-1" aria-labelledby="modalMascotaTitulo" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 border-0 shadow">
+        <div class="modal-header border-bottom-0 pb-0">
+          <h5 class="modal-title fw-bold" id="modalMascotaTitulo">Registrar Nueva Mascota</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body pt-3">
+          <form id="formDashboardMascota">
+            <div class="mb-3">
+              <label for="dashNombre" class="form-label fw-semibold small">Nombre de la Mascota</label>
+              <input type="text" class="form-control rounded-3" id="dashNombre" required placeholder="Ej: Rocky">
+            </div>
+            <div class="mb-3">
+              <label for="dashEspecie" class="form-label fw-semibold small">Especie y Raza</label>
+              <input type="text" class="form-control rounded-3" id="dashEspecie" required placeholder="Ej: Perro Bulldog">
+            </div>
+            <div class="mb-3">
+              <label for="dashPropietario" class="form-label fw-semibold small">Nombre del Propietario</label>
+              <input type="text" class="form-control rounded-3" id="dashPropietario" required placeholder="Ej: Marcela González">
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold rounded-3 mt-2">Guardar Mascota</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Componente Extra: Toast de Notificación Dinámica -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1090;">
+    <div id="toastRegistro" class="toast align-items-center text-bg-success border-0 rounded-3 shadow" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body fw-semibold">
+          ¡Mascota registrada correctamente en el sistema!
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Lógica interactiva para disparar el Toast al enviar el formulario del Modal
+    document.getElementById('formDashboardMascota').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const modalElement = document.getElementById('modalNuevaMascota');
+      const modalInstance = bootstrap.Modal.getInstance(modalElement);
+      modalInstance.hide();
+      this.reset();
+      
+      const toastElement = document.getElementById('toastRegistro');
+      const toast = new bootstrap.Toast(toastElement, { delay: 4000 });
+      toast.show();
+    });
+  </script>
 </body>
 </html>

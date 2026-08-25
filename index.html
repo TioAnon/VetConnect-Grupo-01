@@ -14,8 +14,6 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<script src="js/app.js"></script>
-
 <body class="bg-dashboard">
 
   <!-- 1. Navbar Superior -->
@@ -287,7 +285,7 @@
     </div>
   </footer>
 
-  <!-- 6. Modal Nueva Mascota -->
+<!-- 6. Modal Nueva Mascota (Estandarizado) -->
   <div class="modal fade" id="modalNuevaMascota" tabindex="-1" aria-labelledby="modalMascotaTitulo" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content rounded-4 border-0 shadow">
@@ -298,18 +296,40 @@
         <div class="modal-body pt-3">
           <form id="formDashboardMascota" novalidate>
             <div id="modalFeedback" class="mb-3"></div>
+
             <div class="mb-3">
               <label for="dashNombre" class="form-label fw-semibold small">Nombre de la Mascota</label>
-              <input type="text" class="form-control rounded-3" id="dashNombre" required placeholder="Ej: Rocky">
+              <input type="text" class="form-control rounded-3" id="dashNombre" required placeholder="Ej: Max">
             </div>
+
+            <div class="row g-3 mb-3">
+              <div class="col-7">
+                <label for="dashEspecie" class="form-label fw-semibold small">Especie</label>
+                <select class="form-select rounded-3" id="dashEspecie" required>
+                  <option value="" selected disabled>Selecciona…</option>
+                  <option value="Perro">Perro</option>
+                  <option value="Gato">Gato</option>
+                  <option value="Ave">Ave</option>
+                  <option value="Conejo">Conejo</option>
+                  <option value="Otro">Otro</option>
+                </select>
+              </div>
+              <div class="col-5">
+                <label for="dashEdad" class="form-label fw-semibold small">Edad</label>
+                <input type="number" min="0" class="form-control rounded-3" id="dashEdad" placeholder="Años">
+              </div>
+            </div>
+
             <div class="mb-3">
-              <label for="dashEspecie" class="form-label fw-semibold small">Especie y Raza</label>
-              <input type="text" class="form-control rounded-3" id="dashEspecie" required placeholder="Ej: Perro Bulldog">
+              <label for="dashRaza" class="form-label fw-semibold small">Raza</label>
+              <input type="text" class="form-control rounded-3" id="dashRaza" placeholder="Ej: Golden Retriever">
             </div>
+
             <div class="mb-3">
               <label for="dashPropietario" class="form-label fw-semibold small">Nombre del Propietario</label>
-              <input type="text" class="form-control rounded-3" id="dashPropietario" required placeholder="Ej: Marcela González">
+              <input type="text" class="form-control rounded-3" id="dashPropietario" required placeholder="Ej: Juan Pérez">
             </div>
+
             <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold rounded-3 mt-2">Guardar Mascota</button>
           </form>
         </div>
@@ -321,7 +341,7 @@
   <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1090;">
     <div id="toastRegistro" class="toast align-items-center text-bg-success border-0 rounded-3 shadow" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="d-flex">
-        <div class="toast-body fw-semibold">
+        <div id="toastMensaje" class="toast-body fw-semibold">
           ¡Mascota registrada correctamente en el sistema!
         </div>
         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>

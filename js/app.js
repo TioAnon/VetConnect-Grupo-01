@@ -11,7 +11,7 @@
 // A1. FORMULARIO DE CONTACTO (contacto.html)
 // ================================================================
 function inicializarFormularioContacto() {
-  const formContacto = document.querySelector('form');
+  const formContacto = document.querySelector('#formContacto');
 
   if (!formContacto || !document.getElementById('nombre') || !document.getElementById('correo') || !document.getElementById('mensaje')) {
     return;

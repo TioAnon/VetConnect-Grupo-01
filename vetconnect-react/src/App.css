@@ -1,0 +1,123 @@
+/* ==========================================
+   1. BASE & GENERAL
+   ========================================== */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f5f7fa;
+}
+
+input,
+select,
+button {
+  padding: 10px;
+  font-size: 1rem;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ==========================================
+   2. LAYOUT & ESTRUCTURA
+   ========================================== */
+.app {
+  min-height: 100vh;
+}
+
+.contenedor {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #0d6efd;
+  color: white;
+  padding: 24px 0;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+/* ==========================================
+   3. COMPONENTES COMPARTIDOS
+   ========================================== */
+.stat-card,
+.mascota-card,
+.formulario {
+  background: white;
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================================
+   4. SECCIÓN ESTADÍSTICAS
+   ========================================== */
+.grid-estadisticas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 28px 0;
+}
+
+.stat-card h2 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+/* ==========================================
+   5. FORMULARIO
+   ========================================== */
+.formulario {
+  margin-bottom: 28px;
+}
+
+.formulario-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto;
+  gap: 12px;
+}
+
+/* ==========================================
+   6. SECCIÓN MASCOTAS & TARJETAS
+   ========================================== */
+.grid-mascotas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding-bottom: 40px;
+}
+
+/* Estados */
+.estado {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.activa {
+  background: #d1e7dd;
+  color: #0f5132;
+}
+
+.pendiente {
+  background: #fff3cd;
+  color: #664d03;
+}
+
+/* ==========================================
+   7. MEDIA QUERIES (RESPONSIVE)
+   ========================================== */
+@media (max-width: 800px) {
+  .grid-estadisticas,
+  .grid-mascotas {
+    grid-template-columns: 1fr;
+  }
+
+  .formulario-grid {
+    grid-template-columns: 1fr;
+  }
+}
